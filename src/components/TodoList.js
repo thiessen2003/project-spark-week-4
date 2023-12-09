@@ -6,7 +6,9 @@ function TodoList({todos, removeTodo, toggleComplete}) {
     return (
         <ul style={{ listStyle: 'none' }}>
             {todos.map(todo => (
-                <Todo todo={todo} removeTodo={removeTodo} toggleComplete={toggleComplete}
+                <Todo todo={todo} 
+                removeTodo={removeTodo} 
+                toggleComplete={toggleComplete}
                 />
             ))}
         </ul>    )

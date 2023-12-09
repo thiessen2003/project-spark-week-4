@@ -1,30 +1,16 @@
-import React, {useState} from 'react'
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
-function Todo({todo, toggleComplete, removeTodo}) { 
-    
-    function handleCheckboxClick() {
-        toggleComplete(todo.id);
-    }
-
-    function handleRemoveClick() {
-        removeTodo(todo.id);
-      }
-    
-
-    
-    return (
-        <div style = {{display: "flex"}}>
-            <input type = "checkbox" onClick={handleCheckboxClick}/>
-            <li
-                style = {{
-                    color: "white",
-                    textDecoration: todo.completed ? "line-through" : null
-                }}
-            >
-                {todo.task}</li>
-            <button onClick = {handleRemoveClick}>X</button>
+export const Todo = ({task, deleteTodo, editTodo, toggleComplete}) => {
+  return (
+    <div className="Todo">
+        <p className={`${task.completed ? "completed" : "incompleted"}`} onClick={() => toggleComplete(task.id)}>{task.task}</p>
+        <div>
+        <FontAwesomeIcon className="edit-icon" icon={faPenToSquare} onClick={() => editTodo(task.id)} />
+        <FontAwesomeIcon className="delete-icon" icon={faTrash} onClick={() => deleteTodo(task.id)} />
         </div>
-    )
+    </div>
+  )
 }
-
-export default Todo;
